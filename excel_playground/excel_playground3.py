@@ -66,3 +66,22 @@ print('----------------------')
 # 슬라이싱
 for row in ws.iter_rows(min_row = 1, max_row = 4, min_col = 2, max_col = 6) :
     print(row[0].value)
+
+
+# 2번열을 기준으로 3칸 밀기
+ws.insert_cols(2, 3)
+# 1번행을 기준으로 2칸 밀기
+ws.insert_rows(1, 2)
+# 4번행을 기준으로 1칸 추가
+ws.insert_rows(4)
+
+# 1번행을 기준으로 2칸 제거
+ws.delete_rows(1, 2)
+
+# A1 부터 B2까지 드래그하여 행 1, 열 2칸 옮기기
+ws.move_range('A1:B2', rows = 1, cols = 2)
+# B:2자리에 값 추가
+ws['B2'].value = 'new Value'
+
+# move같은 기능을 사용 시 기존에 있던 데이터를 덮어쓰게 될 수 있다.
+wb.save(path)
